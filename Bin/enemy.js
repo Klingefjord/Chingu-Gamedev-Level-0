@@ -1,6 +1,5 @@
 "use strict";
 var enemiesSheet;
-console.log("test");
 
 // goomba constructor function
 function Goomba(x, y, direction) {
@@ -9,6 +8,7 @@ function Goomba(x, y, direction) {
   this.y = y;
   this.dead = false;
   this.dir = direction;
+  // this.gravity = 1;
 
   // updates position and draws goomba
   this.update = function() {
@@ -19,12 +19,21 @@ function Goomba(x, y, direction) {
         this.x += this.speed; //right
       }
       goombaAnimations.draw(this.x, this.y);
+
+      // fall down if tile underneath is not floor
+      if ()
+
+
+      // stop if wall is hit
+
+
+
     }
 
     // if dead
     else {
       // die animation
-
+      this.die();
     }
   }
 

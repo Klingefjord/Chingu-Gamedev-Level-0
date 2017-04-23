@@ -6,12 +6,6 @@ var testOfCollision = function () {
   marioArrayPosY = Math.floor(marioY / tileSize); // calculate Y row in map array
   marioArrayPosX = Math.floor((mapOffsetX + marioX + (tileSize / 2)) / tileSize); // calculate X column in map array
 
-  // those tails are invisible for Mario
-  var backgroundTiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17, 18, 22, 23, 24, 25, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46];
-
-  // mario can walk on top of those tails elements and have a collision with them 
-  var obstaclesTiles = [12, 13, 14, 15, 19, 20, 21, 26, 27, 30, 47, 'questionMarkOFF'];
-
 
   // if mario is jumping to hight OR tile above his head is comming from "obstaclesTiles" array take him down with gravity
   if ( (jumpStatus && marioY-4 <= 0) || ( jumpStatus && backgroundTiles.indexOf(map[Math.floor(marioY / tileSize)][marioArrayPosX]) === -1)) {
