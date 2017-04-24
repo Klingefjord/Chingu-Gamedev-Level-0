@@ -52,8 +52,8 @@ function onLoaded() {
 
 // Setup
 // x, y, direction (0 = left, 1 = right)
-var goomba = new Goomba(200, canvas.height - 120, 0);
-var goomba2 = new Goomba(800, canvas.height - 120, 0);
+var goomba = new Goomba(1000 + mapOffsetX, 100, 0);
+//var goomba2 = new Goomba(800, canvas.height - 120, 0);
 
 // Game loop
 function loop() {
@@ -62,8 +62,10 @@ function loop() {
   marioAnimations();
   marioStatus();
   marioMoving();
-  goomba.update();
-  goomba2.update();
+  if (marioX + mapOffsetX > 800) {
+    goomba.update();
+  }
+  //goomba2.update();
   updateScreenPosition();
   testOfCollision();
 
