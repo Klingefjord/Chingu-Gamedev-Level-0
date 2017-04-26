@@ -50,29 +50,35 @@ function onLoaded() {
 
 }
 
-// Setup
-// x, y, direction (0 = left, 1 = right)
-var goomba = new Goomba(1000 + mapOffsetX, 100, 0);
-//var goomba2 = new Goomba(800, canvas.height - 120, 0);
 
-// Game loop
+// Game loop --------------------------------------------------
 function loop() {
   mapDraw();
   marioDraw();
   marioAnimations();
   marioStatus();
   marioMoving();
-  if (marioX + mapOffsetX > 800) {
-    goomba.update();
-  }
-  //goomba2.update();
+
+    if (goombas.length < 1 && mapOffsetX > 1000) {
+      spawnGoomba(300 + mapOffsetX, 100, 0);
+    }
+    // Loop through goombas array and apply behaviours
+    for (var i = 0; i < goombas.length; i++) {
+      goombas[i].update();
+      // if (goombas[i].arrayY > 14) {
+      //   console.log("delete");
+      //   goombas = [];
+      // }
+    }
+
+
   updateScreenPosition();
   testOfCollision();
 
 
   setTimeout(loop, 17);
 }
-
+//  -----------------------------------------------------------
 
 /**
  * @param frames - array with [x,y,width,height] every frames coordinates and size on spriteSheet

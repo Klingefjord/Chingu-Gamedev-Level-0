@@ -31,6 +31,8 @@ var testOfCollision = function () {
     marioLanded = false;
   }
 
+  // check if mario jumps on goomba
+
 
   // if mario want to go thru the objects or out of canvas in X axel - stop him
   if (direction === 1
