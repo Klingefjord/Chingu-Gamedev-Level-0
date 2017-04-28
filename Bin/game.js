@@ -52,6 +52,7 @@ function onLoaded() {
 
 
 // Game loop --------------------------------------------------
+
 function loop() {
   mapDraw();
   marioDraw();
@@ -62,13 +63,16 @@ function loop() {
     if (goombas.length < 1 && mapOffsetX > 1000) {
       spawnGoomba(300 + mapOffsetX, 100, 0);
     }
+    if (mapOffsetX > 1200) {
+      goombas[0].die();
+    }
     // Loop through goombas array and apply behaviours
-    for (var i = 0; i < goombas.length; i++) {
+    for (var i = goombas.length - 1; i >= 0; i--) {
       goombas[i].update();
-      // if (goombas[i].arrayY > 14) {
-      //   console.log("delete");
-      //   goombas = [];
-      // }
+      if (goombas[i].dead) {
+        delete goombas[i];
+        goombas.splice(i,1);
+      }
     }
 
 
@@ -76,7 +80,7 @@ function loop() {
   testOfCollision();
 
 
-  setTimeout(loop, 17);
+  setTimeout(loop, 20);
 }
 //  -----------------------------------------------------------
 
